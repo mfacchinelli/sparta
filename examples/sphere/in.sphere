@@ -1,0 +1,37 @@
+# 3d flow around a sphere
+
+seed	    	    12345
+dimension   	    3
+
+global              gridcut 0.1 comm/sort yes
+
+boundary	    o o o
+
+create_box  	    -2 2 -2 2 -2 2
+
+create_grid         20 20 20
+
+balance_grid        rcb cell
+
+global		    nrho 1.0 fnum 0.0005
+
+species		    air.species N O
+mixture		    air N O vstream 100.0 0 0 
+
+read_surf           data.sphere
+surf_collide	    1 diffuse 300.0 0.0
+surf_modify         all collide 1
+
+collide		    vss air air.vss
+
+fix		    in emit/face air xlo 
+
+timestep 	    0.0001
+
+compute 	    1 surf all air px py pz shx shy shz
+fix 		    1 ave/surf all 10 20 200 c_1[*]
+dump 		    1 surf all 200 force.* id f_1[*]
+
+stats		    100
+stats_style	    step cpu np nattempt ncoll nscoll nscheck
+run 		    1000
