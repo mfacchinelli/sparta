@@ -44,6 +44,7 @@ You are now ready to run SPARTA applications. It is highly recommended to first 
 	-2 2
 	ITEM: SURFS id f_1[1] f_1[2] f_1[3] f_1[4] f_1[5] f_1[6]
 	1 2.09519e-21 1.8073e-21 1.93534e-21 -1.55814e-37 -1.55814e-37 -2.33721e-37
+	15 0 0 0 0 0 0
 	29 4.1913e-22 3.92169e-22 -2.22258e-22 -5.09671e-38 -5.09671e-38 2.54835e-38
 	43 0 0 0 0 0 0
 	...
