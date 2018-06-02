@@ -16,8 +16,7 @@ The version available in this repository is updated to the latest version (**4 A
 	This will create a new directory in your main folder. 
 3. Clone this repository to the folder you just created by running:
 	```unix
-	cd ~/sparta/
-	git clone https://github.com/mfacchinelli/sparta.git
+	git clone https://github.com/mfacchinelli/sparta.git ~/sparta/
 	```
 4. Compile the SPARTA source code by typing the following commands:
 	```unix
@@ -31,7 +30,7 @@ You are now ready to run SPARTA applications. It is highly recommended to first 
 5. Run the sphere example with the commands:
 	```unix
 	cd ~/sparta/examples/sphere/
-	mpirun -np 14 ~/sparta/src/spa_mpi -in in.mro
+	mpirun -np 14 ~/sparta/src/spa_mpi -in in.sphere
 	```
 	Note that the paths and/or file names will need to be adapted in case you compiled a different `MAKEFILE` or chose a different name for the SPARTA repository. If everything goes well, SPARTA will output a bunch of lines in the terminal window, and in the same folder you will find 5 new files, called something like `force.0`, `force.200`, etc. These are the values of the average pressure and shear force computed by SPARTA every 200 time steps, for each triangle making up the sphere we are analyzing. You can find more information on the `dump` commands in the manual (which is also installed by step 3, and can be found under `~/sparta/Manual.pdf`). 
 6. Now open the file called `force.600` and compare the results with the values below. Note that to open the file, you can use *either* of these commands:
@@ -51,13 +50,14 @@ You are now ready to run SPARTA applications. It is highly recommended to first 
 	-2 2
 	-2 2
 	ITEM: SURFS id f_1[1] f_1[2] f_1[3] f_1[4] f_1[5] f_1[6]
-	1 2.09519e-21 1.8073e-21 1.93534e-21 -1.55814e-37 -1.55814e-37 -2.33721e-37
+	1 2.86483e-21 2.47118e-21 2.64626e-21 -1.55814e-37 -1.55814e-37 0
 	15 0 0 0 0 0 0
-	29 4.1913e-22 3.92169e-22 -2.22258e-22 -5.09671e-38 -5.09671e-38 2.54835e-38
+	29 4.6482e-22 4.3492e-22 -2.46486e-22 -5.09671e-38 -7.64506e-38 2.54835e-38
 	43 0 0 0 0 0 0
+	57 1.27568e-21 8.706e-22 1.31251e-22 -1.30703e-37 -1.30703e-37 -1.63378e-38
 	...
 	```
-	The first 9 lines confirm what the user has input, i.e., that the `dump` files are created as a function of time step, that the geometry (the sphere) is make up of 1200 triangles (or surfaces) and that the simulation environment has open bounds that extend from -2 to 2 along each axis. Then the file shows each element of the pressure and shear forces vectors (so p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>, s<sub>1</sub>, s<sub>2</sub> and s<sub>3</sub>) for each surface element. The ID of the surface element (`SURFS id` in the file) is in the first column, and is in a 'scrambled' order due to the usage of multiple cores (see the manual for more information). If the lines above match the output of your simulation, then it would appear that the installation went well! If not, try to figure out what went wrong yourself first, and otherwise open a new issue on GitHub.
+	The first 9 lines confirm what the user has input, i.e., that the `dump` files are created as a function of time step, that the geometry (the sphere) is make up of 1200 triangles (or surfaces) and that the simulation environment has open bounds that extend from -2 to 2 along each axis. Then the file shows each element of the pressure and shear forces vectors (so p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>, s<sub>1</sub>, s<sub>2</sub> and s<sub>3</sub>) for each surface element. The ID of the surface element (`SURFS id` in the file) is in the first column, and is in a 'scrambled' order due to the usage of multiple cores (see the manual for more information). If the lines above match the output of your simulation, then it would appear that the installation went well! If not, and you are using a different machine than the TU Delft servers, then it may have to do with that. However, the order of magnitude should still be the same. Otherwise, try to figure out what went wrong yourself first, and otherwise open a new issue on GitHub.
 
 ## Documentation
 
