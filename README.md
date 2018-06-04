@@ -50,11 +50,11 @@ You are now ready to run SPARTA applications. It is highly recommended to first 
 	-2 2
 	-2 2
 	ITEM: SURFS id f_1[1] f_1[2] f_1[3] f_1[4] f_1[5] f_1[6]
-	1 2.86483e-21 2.47118e-21 2.64626e-21 -1.55814e-37 -1.55814e-37 0
-	15 0 0 0 0 0 0
-	29 4.6482e-22 4.3492e-22 -2.46486e-22 -5.09671e-38 -7.64506e-38 2.54835e-38
-	43 0 0 0 0 0 0
-	57 1.27568e-21 8.706e-22 1.31251e-22 -1.30703e-37 -1.30703e-37 -1.63378e-38
+	1 0 0 0 0 0 0 
+	15 0 0 0 0 0 0 
+	29 0.00519895 0.00486452 -0.00275691 0 0 5.09671e-19 
+	43 0 0 0 0 0 0 
+	57 0.0178258 0.0121653 0.00183404 -5.2281e-18 -2.61405e-18 -6.53513e-19 
 	...
 	```
 	The first 9 lines confirm what the user has input, i.e., that the `dump` files are created as a function of time step, that the geometry (the sphere) is make up of 1200 triangles (or surfaces) and that the simulation environment has open bounds that extend from -2 to 2 along each axis. Then the file shows each element of the pressure and shear forces vectors (so p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>, s<sub>1</sub>, s<sub>2</sub> and s<sub>3</sub>) for each surface element. The ID of the surface element (`SURFS id` in the file) is in the first column, and is in a 'scrambled' order due to the usage of multiple cores (see the manual for more information). If the lines above match the output of your simulation, then it would appear that the installation went well! If not, and you are using a different machine than the TU Delft servers, then it may have to do with that. However, the order of magnitude should still be the same. Otherwise, try to figure out what went wrong yourself first, and otherwise open a new issue on GitHub.
